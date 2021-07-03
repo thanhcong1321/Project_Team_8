@@ -64,14 +64,16 @@ def load_data(tickers, start, end):
 # Plot line chart with tickets
 
 
-
+# try:
+s_stock = st.text_input(label="Type a ticker")
+# display the collected input
+st.write('You selected this ticker: ' + str(s_stock))
+data_load_state = st.text('Loading data...')
 try:
-	s_stock = st.text_input(label="Type your stock")
-	# display the collected input
-	st.write('You selected the stock: ' + str(s_stock))
-	data_load_state = st.text('Loading data...')
 	loader = DataLoader.DataLoader([s_stock], start, end, minimal=True)
 	df = loader.download()
+	
+
 	df.columns = ['High', 'Low', 'Open', 'Close', 'Adjust', 'Volume']
 	df = df.reset_index()
 	df = df.dropna()
@@ -86,7 +88,9 @@ try:
 						close=df['Close'].values))
 
 	fig.update_layout(title=str(s_stock))
-	fig.update_layout(autosize=False,width=900,height=500)
+	fig.update_layout(autosize=False,
+					width=900,
+					height=500)
 	#                   margin=dict(l=50,r=50,b=100,t=100,pad=4),
 	#                   paper_bgcolor="LightSteelBlue")
 
@@ -94,23 +98,12 @@ try:
 	st.write(fig)
 
 except:
-	st.write("You don't have stock yet")
+	st.write("You don't have a ticker or you typed wrong ticker")
 
 
 
 
 st.subheader("Let's build your portfolio")
-try:
-	str_input = st.text_input(label="Type your tickers")
-	tickers = str_input.strip().split()	
-	# display the collected input
-	st.write('You choose tickers: ', tickers)
-	df = load_data(tickers, start, end)
-	# # Plot line chart
-	# st.line_chart(df[s_stock])
-except:
-	st.write("You haven't portfolio yet!!!")
-
 
 def optimal_portfolio(df):
 # thay đổi giá đóng cửa hàng ngày (đơn vị %)
@@ -125,7 +118,7 @@ def optimal_portfolio(df):
 	pf_weights = []
 
 	num_assets = len(df.columns) # = 5
-	num_portfolios = 10000 # Giả lập 100,000 danh mục dổ phiếu
+	num_portfolios = 100000 # Giả lập 100,000 danh mục dổ phiếu
 
 
 	for i in tqdm(range(num_portfolios)):
@@ -154,8 +147,14 @@ def optimal_portfolio(df):
 
 	return portfolios
 
-	
 try:
+	str_input = st.text_input(label="Type your tickers")
+	tickers = str_input.strip().split()	
+	# display the collected input
+	st.write('You choose tickers: ', tickers)
+	df = load_data(tickers, start, end)
+
+	# build your own optimal portfolios
 	portfolios = optimal_portfolio(df)
 	min_std_port = portfolios.iloc[portfolios['Standard_Deviation'].idxmin()]
 	optimal_port = portfolios.iloc[portfolios['Sharpe_ratio'].idxmax()]  
