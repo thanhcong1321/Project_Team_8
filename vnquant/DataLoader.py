@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from vnquant_lib import utils
+from vnquant import utils
 import pandas as pd
 import logging as logging
 from datetime import datetime

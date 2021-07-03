@@ -1,7 +1,7 @@
 from vnquant_lib import DataLoader
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from vnquant_lib import utils
+from vnquant import utils
 import pandas as pd
 
 def candle_stick_source(symbol,
