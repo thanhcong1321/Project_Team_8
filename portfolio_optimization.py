@@ -85,7 +85,7 @@ try:
 						low=df['Low'].values,
 						close=df['Close'].values))
 
-	fig.update_layout(title="BVH")
+	fig.update_layout(title=str(s_stock)
 	fig.update_layout(autosize=False,
 					width=900,
 					height=500)
