@@ -118,7 +118,7 @@ def optimal_portfolio(df):
 	pf_weights = []
 
 	num_assets = len(df.columns) # = 5
-	num_portfolios = 100000 # Giả lập 100,000 danh mục dổ phiếu
+	num_portfolios = 10000 # Giả lập 100,000 danh mục dổ phiếu
 
 
 	for i in tqdm(range(num_portfolios)):
