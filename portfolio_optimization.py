@@ -85,7 +85,7 @@ try:
 						low=df['Low'].values,
 						close=df['Close'].values))
 
-	fig.update_layout(title=str(s_stock)
+	fig.update_layout(title=str(s_stock))
 	fig.update_layout(autosize=False,width=900,height=500)
 	#                   margin=dict(l=50,r=50,b=100,t=100,pad=4),
 	#                   paper_bgcolor="LightSteelBlue")
