@@ -65,7 +65,7 @@ def load_data(tickers, start, end):
 
 
 # try:
-s_stock = st.text_input(label="Type a ticker")
+s_stock = st.text_input(label="Type a ticker").upper()
 # display the collected input
 st.write('You selected this ticker: ' + str(s_stock))
 data_load_state = st.text('Loading data...')
@@ -118,7 +118,7 @@ def optimal_portfolio(df):
 	pf_weights = []
 
 	num_assets = len(df.columns) # = 5
-	num_portfolios = 10000 # Giả lập 100,000 danh mục dổ phiếu
+	num_portfolios = 50000 # Giả lập 50,000 danh mục dổ phiếu
 
 
 	for i in tqdm(range(num_portfolios)):
@@ -148,7 +148,7 @@ def optimal_portfolio(df):
 	return portfolios
 
 try:
-	str_input = st.text_input(label="Type your tickers")
+	str_input = st.text_input(label="Type your tickers").upper()
 	tickers = str_input.strip().split()	
 	# display the collected input
 	st.write('You choose tickers: ', tickers)
