@@ -118,7 +118,7 @@ def optimal_portfolio(df):
 	pf_weights = []
 
 	num_assets = len(df.columns) # = 5
-	num_portfolios = 50000 # Giả lập 50,000 danh mục dổ phiếu
+	num_portfolios = 0000 # Giả lập 50,000 danh mục dổ phiếu
 
 
 	for i in tqdm(range(num_portfolios)):
@@ -139,7 +139,7 @@ def optimal_portfolio(df):
     
 	portfolios  = pd.DataFrame(data)
 
-	risk_free = 0.01 # rủi ro thị trường là 10%
+	risk_free = 0.1 # rủi ro thị trường là 10%
 	portfolios['Sharpe_ratio'] = ((portfolios['Returns'] - risk_free)/portfolios['Standard_Deviation'])
 
 	# # Danh mục đầu tư có độ lệch chuẩn thấp nhất
