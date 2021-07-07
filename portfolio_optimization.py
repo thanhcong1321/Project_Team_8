@@ -139,7 +139,7 @@ def optimal_portfolio(df):
     
 	portfolios  = pd.DataFrame(data)
 
-	risk_free = 0.1 # rủi ro thị trường là 10%
+	risk_free = 0.02 # rủi ro thị trường là22%
 	portfolios['Sharpe_ratio'] = ((portfolios['Returns'] - risk_free)/portfolios['Standard_Deviation'])
 
 	# # Danh mục đầu tư có độ lệch chuẩn thấp nhất
